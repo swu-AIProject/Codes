@@ -24,6 +24,8 @@
         <activity
             android:name="app.ij.mlwithtensorflowlite.MainActivity"
             android:exported="true" >
+        </activity>
+        <activity android:name="app.ij.mlwithtensorflowlite.StartPage" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
