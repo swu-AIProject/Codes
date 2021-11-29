@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "D:\\(3-2)AI\\Codes\\Image-Classification-App-with-Teachable-Machine\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-xlarge-v4\\values-xlarge-v4.xml",
+            "outputFile": "F:\\pro\\image_classification\\Image-Classification-App-with-Teachable-Machine\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-xlarge-v4\\values-xlarge-v4.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\linda\\.gradle\\caches\\transforms-3\\43711b72eaf2f529e5b9b1576380fb27\\transformed\\appcompat-1.3.1\\res\\values-xlarge-v4\\values-xlarge-v4.xml",
+                    "source": "C:\\Users\\gksdb\\.gradle\\caches\\transforms-3\\416dadcf94808173a7a1d25aeaa9a596\\transformed\\appcompat-1.3.1\\res\\values-xlarge-v4\\values-xlarge-v4.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7",
                         "startColumns": "4,4,4,4,4,4",
