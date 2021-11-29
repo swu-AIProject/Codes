@@ -11,6 +11,7 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.media.ThumbnailUtils;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -32,8 +33,13 @@ public class MainActivity extends AppCompatActivity {
 
     TextView result, confidence;
     ImageView imageView;
-    Button picture;
+    //Button picture;
     int imageSize = 224;
+
+    @Override
+    public Intent getIntent() {
+        return super.getIntent();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,21 +49,17 @@ public class MainActivity extends AppCompatActivity {
         result = findViewById(R.id.result);
         confidence = findViewById(R.id.confidence);
         imageView = findViewById(R.id.imageView);
-        picture = findViewById(R.id.button);
 
-        picture.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // Launch camera if we have permission
-                if (checkSelfPermission(Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
-                    Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                    startActivityForResult(cameraIntent, 1);
-                } else {
-                    //Request camera permission if we don't have it.
-                    requestPermissions(new String[]{Manifest.permission.CAMERA}, 100);
-                }
-            }
-        });
+        byte[] byteArray = getIntent().getByteArrayExtra("image");
+        Bitmap bitmap = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
+
+        int dimension = Math.min(bitmap.getWidth(), bitmap.getHeight());
+        bitmap = ThumbnailUtils.extractThumbnail(bitmap, dimension, dimension);
+
+        imageView.setImageBitmap(bitmap);
+        //altering img to bitmap
+        bitmap = Bitmap.createScaledBitmap(bitmap, imageSize, imageSize, false);
+        classifyImage(bitmap);
     }
 
     public void classifyImage(Bitmap image){
@@ -118,6 +120,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+/*
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         if (requestCode == 1 && resultCode == RESULT_OK) {
@@ -133,4 +136,5 @@ public class MainActivity extends AppCompatActivity {
         }
         super.onActivityResult(requestCode, resultCode, data);
     }
+*/
 }
